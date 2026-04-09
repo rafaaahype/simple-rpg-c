@@ -1,0 +1,4 @@
+#ignorando executaveis
+main
+*.out
+*.exe 
