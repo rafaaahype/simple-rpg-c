@@ -1,6 +1,6 @@
 
 #include <raylib.h>
-
+#include <math.h>
 
 class Player{
   private:

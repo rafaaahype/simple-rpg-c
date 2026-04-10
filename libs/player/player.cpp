@@ -1,5 +1,5 @@
 #include "player.h"
-#include <math.h>
+
 Player::Player(float posX, float posY, float vel){
   this->posX = posX;
   this->posY = posY;
