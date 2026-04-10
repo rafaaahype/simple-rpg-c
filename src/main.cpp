@@ -12,9 +12,9 @@ int main(void){
 	while(!WindowShouldClose()){
 		//Declarando Variáveis de Controle
 		bool cima = IsKeyDown(KEY_UP) || IsKeyDown(KEY_W);
-  	bool baixo = IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_S);
-  	bool direita = IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D);
-  	bool esquerda = IsKeyDown(KEY_LEFT) || IsKeyDown(KEY_A);
+		bool baixo = IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_S);
+		bool direita = IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D);
+		bool esquerda = IsKeyDown(KEY_LEFT) || IsKeyDown(KEY_A);
 
 		//Criando a movimentação do Player
 		jogador.movimentacao(cima, baixo, esquerda, direita);
