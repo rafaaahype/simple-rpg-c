@@ -1,14 +1,32 @@
 #include "raylib.h"
+#include "../libs/player/player.h"
+
+#define TAMANHO_X 500
+#define TAMANHO_Y 500
 
 int main(void){
-	//Inicializando Variáveis do Jogador
-	float posX=50, posY=50, spd=4;
-	InitWindow(500, 500, "simple rpg c");
+	InitWindow(TAMANHO_X, TAMANHO_Y, "simple rpg c");
 	SetTargetFPS(60);
+	//Inicializando Variáveis do Jogador
+	float posX=50, posY=50, vel = 4;
+
+	//Criação do objeto Player
+	Player jogador(posX, posY, vel);
+	jogador.InitCam(TAMANHO_X, TAMANHO_Y);
+
 	while(!WindowShouldClose()){
-		ClearBackground(RAYWHITE);
+
+
+		//Criando a movimentação do Player
+		jogador.movimentacao();
+
+		//Desenhando
 		BeginDrawing();
-			DrawRectangle(posX, posY, 30, 30, RED);
+			BeginMode2D(jogador.getCamera());
+			ClearBackground(RAYWHITE);
+			DrawRectangle(jogador.getPosX(), jogador.getPosY(), 50, 50, RED);
+			DrawRectangle(40, 40, 50, 50, BLUE);
+
 		EndDrawing();
 	}
 	CloseWindow();
