@@ -1,10 +1,14 @@
 #include "raylib.h"
-#include "../libs/libmovchep.h"
+#include "../libs/player/player.h"
 int main(void){
 	InitWindow(500, 500, "simple rpg c");
 	SetTargetFPS(60);
 	//Inicializando Variáveis do Jogador
 	float vel = 4; float posX=50, posY=50;
+
+	//Criação do objeto Player
+	Player jogador(posX, posY, vel);
+
 	while(!WindowShouldClose()){
 		//Declarando Variáveis de Controle
 		bool cima = IsKeyDown(KEY_UP) || IsKeyDown(KEY_W);
@@ -15,9 +19,10 @@ int main(void){
 		//Movimentando Jogador
 		float velv = (direita-esquerda)*vel;
 		float velh = (baixo-cima)*vel;
-		//Calculando Hipotenusa 
-		float dis = distancia_pontos(0, 0, velh, velv);
+		//Calculando Hipotenusa
+		// float dis = distanciaPontos(0, 0, velh, velv);
 		//Corrigindo Diagonal
+		float dis = 0;
 		if(dis>0){
 			velh = (velh/dis)*vel;
 			velv = (velv/dis)*vel;
