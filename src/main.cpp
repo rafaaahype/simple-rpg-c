@@ -1,28 +1,32 @@
 #include "raylib.h"
 #include "../libs/player/player.h"
+
+#define TAMANHO_X 500
+#define TAMANHO_Y 500
+
 int main(void){
-	InitWindow(500, 500, "simple rpg c");
+	InitWindow(TAMANHO_X, TAMANHO_Y, "simple rpg c");
 	SetTargetFPS(60);
 	//Inicializando Variáveis do Jogador
 	float posX=50, posY=50, vel = 4;
 
 	//Criação do objeto Player
 	Player jogador(posX, posY, vel);
+	jogador.InitCam(TAMANHO_X, TAMANHO_Y);
 
 	while(!WindowShouldClose()){
-		//Declarando Variáveis de Controle
-		bool cima = IsKeyDown(KEY_UP) || IsKeyDown(KEY_W);
-		bool baixo = IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_S);
-		bool direita = IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D);
-		bool esquerda = IsKeyDown(KEY_LEFT) || IsKeyDown(KEY_A);
+
 
 		//Criando a movimentação do Player
-		jogador.movimentacao(cima, baixo, esquerda, direita);
+		jogador.movimentacao();
 
 		//Desenhando
 		BeginDrawing();
+			BeginMode2D(jogador.getCamera());
 			ClearBackground(RAYWHITE);
 			DrawRectangle(jogador.getPosX(), jogador.getPosY(), 50, 50, RED);
+			DrawRectangle(40, 40, 50, 50, BLUE);
+
 		EndDrawing();
 	}
 	CloseWindow();
